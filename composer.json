@@ -1,0 +1,26 @@
+{
+    "name": "larium/model",
+    "description": "An abstract superclass for domain models.",
+    "keywords": ["domain", "model", "entity", "superclass", "abstract"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Kollaros",
+            "email": "andreas@larium.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larium\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Larium\\": "tests/"
+        }
+    }
+}
