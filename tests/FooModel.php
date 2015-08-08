@@ -24,4 +24,16 @@ class FooModel extends AbstractModel
     protected $last_name;
 
     public $rab;
+
+    private $foo;
+
+    public function getFoo()
+    {
+        return $this->foo;
+    }
+
+    public function setFoo($foo)
+    {
+        $this->foo = $foo . '.foo';
+    }
 }

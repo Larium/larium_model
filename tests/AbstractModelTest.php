@@ -86,9 +86,18 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException RuntimeException
+     * @expectedExceptionMessage Cannot instatiate abstract class Larium\AbstractModel.
      */
     public function testShouldNotFactoryAbstractModel()
     {
         AbstractModel::factory(array('foo' => 'foo'));
+    }
+
+    public function testUserDefinedSetterGetter()
+    {
+        $foo = new FooModel();
+        $foo->setFoo('foo');
+
+        $this->assertEquals('foo.foo', $foo->getFoo());
     }
 }

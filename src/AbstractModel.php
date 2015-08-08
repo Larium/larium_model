@@ -41,11 +41,11 @@ abstract class AbstractModel
      * @throws RuntimeException if factory method called via Abstract class.
      * @return AbstractModel
      */
-    public static function factory(array $data, array $constrArgs = array())
+    final public static function factory(array $data, array $constrArgs = array())
     {
         $class = get_called_class();
         if ($class === __CLASS__) {
-            throw new RuntimeException(sprintf('Cannot instatiate abstract class %s', $class));
+            throw new RuntimeException(sprintf('Cannot instatiate abstract class %s.', $class));
         }
         $model = empty($constrArgs)
             ? new static()
