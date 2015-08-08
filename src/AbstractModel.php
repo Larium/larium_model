@@ -19,8 +19,13 @@ use UnexpectedValueException;
 /**
  * AbstractModel class will expose any class properties to setter/getter
  * methods through magic method __call.
+ * This will prevent any biolerplate code to be written for models.
  *
  * Also will provide a static factory method for creating new instances.
+ *
+ * Any data set either from factory or setData methods, will call setter
+ * method for property. If setter method does not exists then will fallback to
+ * magic __call method.
  *
  * @author  Andreas Kollaros <andreas@larium.net>
  */
