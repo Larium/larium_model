@@ -3,20 +3,24 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /*
- * This file is part of the Larium Http Client package.
+ * This file is part of the Larium Model package.
  *
  * (c) Andreas Kollaros <andreas@larium.net>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Larium;
 
 use RuntimeException;
 use UnexpectedValueException;
 
 /**
- * AbstractModel class.
+ * AbstractModel class will expose any class properties to setter/getter
+ * methods through magic method __call.
+ *
+ * Also will provide a static factory method for creating new instances.
  *
  * @author  Andreas Kollaros <andreas@larium.net>
  */
@@ -25,9 +29,11 @@ abstract class AbstractModel
     /**
      * Factory method for creating new instances.
      *
-     * @param array $data       An associative array with dte to set.
-     * @param array $constrArgs Optional an array with variabes to pass to
-     *                          class constructor
+     * @param array $data       An associative array with data to set.
+     * @param array $constrArgs Optional an array with variables to pass to
+     *                          class constructor.
+     *
+     * @throws RuntimeException if factory method called via Abstract class.
      * @return AbstractModel
      */
     public static function factory(array $data, array $constrArgs = array())
@@ -39,7 +45,6 @@ abstract class AbstractModel
         $model = empty($constrArgs)
             ? new static()
             : (new ReflectionClass($class))->newInstanceArgs($constrArgs);
-
 
         self::setPropetiesValues($data, $model);
 
