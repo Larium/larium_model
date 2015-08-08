@@ -25,8 +25,9 @@ abstract class AbstractModel
     /**
      * Factory method for creating new instances.
      *
-     * @param array $data
-     * @param array $constrArgs
+     * @param array $data       An associative array with dte to set.
+     * @param array $constrArgs Optional an array with variabes to pass to
+     *                          class constructor
      * @return AbstractModel
      */
     public static function factory(array $data, array $constrArgs = array())
@@ -46,7 +47,8 @@ abstract class AbstractModel
     }
 
     /**
-     * setData
+     * Sets data to model.
+     * This will call the setter of each property and set the value accordingly.
      *
      * @param array $data
      * @return void
@@ -61,15 +63,17 @@ abstract class AbstractModel
         $type           = substr($name, 0, 3);
         $propertyName   = substr($name, 3);
 
-        if (!($property = $this->propertyExists($propertyName))) {
+        if (!($property = $this->propertyExists($propertyName))
+            || !in_array($type, array('set', 'get'))
+        ) {
             throw new UnexpectedValueException(sprintf('Method with name %s does not exists.', $name));
         }
 
-        if ($type === 'get') {
-            return $this->$property;
-        } elseif ($type === 'set') {
-            return $this->$property = $args[0];
+        if ($type === 'set') {
+            $this->$property = $args[0];
         }
+
+        return $this->$property;
     }
 
     private function propertyExists($propertyName)
