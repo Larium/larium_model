@@ -100,4 +100,13 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('foo.foo', $foo->getFoo());
     }
+
+    public function testFactoryWithConstructorArgs()
+    {
+        $foo = new FooModel();
+
+        $bar = BarModel::factory(array(), array($foo));
+
+        $this->assertInstanceOf('Larium\BarModel', $bar);
+    }
 }

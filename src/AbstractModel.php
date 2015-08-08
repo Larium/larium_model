@@ -15,6 +15,7 @@ namespace Larium;
 
 use RuntimeException;
 use UnexpectedValueException;
+use ReflectionClass;
 
 /**
  * AbstractModel class will expose any class properties to setter/getter
