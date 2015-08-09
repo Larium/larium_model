@@ -15,9 +15,9 @@ namespace Larium;
 
 class AbstractModelTest extends \PHPUnit_Framework_TestCase
 {
-    public function testShouldFactoryModel()
+    public function testShouldCreateModel()
     {
-        $foo = FooModel::factory(array('bar' => 'bar'));
+        $foo = FooModel::create(array('bar' => 'bar'));
 
         $this->assertInstanceOf(
             'Larium\\FooModel',
@@ -27,7 +27,7 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldAccessPropertiesThroughMagicMethodCall()
     {
-        $foo = FooModel::factory(array(
+        $foo = FooModel::create(array(
             'bar' => 'bar',
             'baz' => 'baz'
         ));
@@ -38,7 +38,7 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldAccessPublicPropertiesThroughMagicMethodCall()
     {
-        $foo = FooModel::factory(array('rab' => 'rab'));
+        $foo = FooModel::create(array('rab' => 'rab'));
 
         $this->assertEquals('rab', $foo->getRab());
 
@@ -88,9 +88,9 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
      * @expectedException RuntimeException
      * @expectedExceptionMessage Cannot instatiate abstract class Larium\AbstractModel.
      */
-    public function testShouldNotFactoryAbstractModel()
+    public function testShouldNotCreateAbstractModel()
     {
-        AbstractModel::factory(array('foo' => 'foo'));
+        AbstractModel::create(array('foo' => 'foo'));
     }
 
     public function testUserDefinedSetterGetter()
@@ -101,11 +101,11 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo.foo', $foo->getFoo());
     }
 
-    public function testFactoryWithConstructorArgs()
+    public function testCreateWithConstructorArgs()
     {
         $foo = new FooModel();
 
-        $bar = BarModel::factory(array(), array($foo));
+        $bar = BarModel::create(array(), array($foo));
 
         $this->assertInstanceOf('Larium\BarModel', $bar);
     }

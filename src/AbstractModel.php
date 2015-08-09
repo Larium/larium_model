@@ -44,7 +44,7 @@ abstract class AbstractModel
      * @throws RuntimeException if factory method called via Abstract class.
      * @return AbstractModel
      */
-    final public static function factory(array $data, array $constrArgs = array())
+    final public static function create(array $data, array $constrArgs = array())
     {
         $class = get_called_class();
         if ($class === __CLASS__) {

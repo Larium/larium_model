@@ -24,13 +24,13 @@ $user->setUsername('JohnDoe');
 echo $user->getUserName(); # echoes JohnDoe.
 ```
 
-### Using Factory method
+### Using create method
 
 ```php
 <?php
 
 $data = array('username' => 'johnDoe');
-$user = UserModel::factory($data);
+$user = UserModel::create($data);
 
 echo $user->getUserName(); # echoes JohnDoe.
 ```
@@ -46,7 +46,7 @@ $user->setData($data);
 
 echo $user->getUsername(); # echoes JohnDoe
 ```
-### Using factory method with constructor arguments
+### Using create method with constructor arguments
 ```php
 <?php
 
@@ -69,7 +69,7 @@ class CommentModel extends AbstractModel
 <?php
 $user = new UserModel();
 $date = array('content' => 'Lorem Ipsum');
-$comment = CommentModel::factory($data, array($user));
+$comment = CommentModel::create($data, array($user));
 
 $comment->getUser(); # return UserModel instance.
 ```
