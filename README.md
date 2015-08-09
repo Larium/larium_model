@@ -1,5 +1,32 @@
 # Abstract superclass for domain models.
 
+## Installation
+You can install this library using [Composer](http://getcomposer.org)
+### Command line
+In root directory of your project run through a console:
+```bash
+$ composer require "larium/model":"1.0.*"
+```
+### Composer.json
+Include require line in your ```composer.json``` file
+```json
+{
+	require: {
+    	"larium/model": "1.0.*"
+    }
+}
+```
+and run from console in the root directory of your project:
+```bash
+$ composer update
+```
+
+After this you must require autoload file from composer.
+```php
+<?php
+require_once 'vendor/autoload.php';
+```
+
 ## Usage
 
 ```php
