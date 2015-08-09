@@ -27,6 +27,8 @@ class FooModel extends AbstractModel
 
     private $foo;
 
+    private $myPrivate;
+
     public function getFoo()
     {
         return $this->foo;

@@ -16,11 +16,13 @@ namespace Larium;
 use RuntimeException;
 use UnexpectedValueException;
 use ReflectionClass;
+use ReflectionProperty;
 
 /**
- * AbstractModel class will expose any class properties to setter/getter
- * methods through magic method __call.
+ * AbstractModel class will expose any public or protected class properties
+ * to setter/getter methods through magic method __call.
  * This will prevent any biolerplate code to be written for models.
+ * AbstractModel will NOT WORK with private properties.
  *
  * Also will provide a static factory method for creating new instances.
  *
@@ -78,6 +80,11 @@ abstract class AbstractModel
             || !in_array($type, array('set', 'get'))
         ) {
             throw new UnexpectedValueException(sprintf('Method with name %s does not exists.', $name));
+        }
+
+        $prop = new ReflectionProperty($this, $property);
+        if ($prop->isPrivate() || $prop->isStatic()) {
+            throw new RuntimeException('Cannot access private or static properties.');
         }
 
         if ($type === 'set') {

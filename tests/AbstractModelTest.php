@@ -109,4 +109,15 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Larium\BarModel', $bar);
     }
+
+    /**
+     * @expectedException RuntimeException
+     * @expectedExceptionMessage Cannot access private or static properties.
+     */
+    public function testShouldnotExposePrivateProperties()
+    {
+        $foo = new FooModel();
+
+        $foo->getMyPrivate();
+    }
 }
