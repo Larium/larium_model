@@ -5,14 +5,14 @@ You can install this library using [Composer](http://getcomposer.org)
 ### Command line
 In root directory of your project run through a console:
 ```bash
-$ composer require "larium/model":"1.0.*"
+$ composer require "larium/model":"~1.0"
 ```
 ### Composer.json
 Include require line in your ```composer.json``` file
 ```json
 {
 	require: {
-    	"larium/model": "1.0.*"
+    	"larium/model": "~1.0"
     }
 }
 ```
