@@ -62,14 +62,14 @@ $user = UserModel::create($data);
 echo $user->getUserName(); # echoes JohnDoe.
 ```
 
-### Using setData method
+### Using assignData method
 ```php
 <?php
 
 $user = new UserModel();
 
 $data = array('username' => 'JohnDoe');
-$user->setData($data);
+$user->assignData($data);
 
 echo $user->getUsername(); # echoes JohnDoe
 ```

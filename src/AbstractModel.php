@@ -66,7 +66,7 @@ abstract class AbstractModel
      * @param array $data
      * @return void
      */
-    public function setData(array $data)
+    public function assignData(array $data)
     {
         self::setPropetiesValues($data, $this);
     }

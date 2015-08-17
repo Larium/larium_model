@@ -50,7 +50,7 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
     public function testShouldAssignPropertiesOfModel()
     {
         $foo = new FooModel();
-        $foo->setData(array(
+        $foo->assignData(array(
             'bar' => 'bar',
             'baz' => 'baz',
             'rab' => 'foo'
@@ -64,7 +64,7 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase
     public function testShouldAssignPropertiesForVariousCases()
     {
         $foo = new FooModel();
-        $foo->setData(array(
+        $foo->assignData(array(
             'firstName' => 'John',
             'last_name' => 'Doe'
         ));
